@@ -16,40 +16,41 @@ const UserForm = ({ values, errors, touched, status }) => {
     return (
       <div className="user-form">
         <Form>
-          <Field type="text" name="species" placeholder="Species" />
-          {touched.species && errors.species && (
-            <p className="error">{errors.species}</p>
+          <Field type="text" name="name" placeholder="Name" />
+          {touched.name && errors.name && (
+            <p className="error">{errors.name}</p>
           )}
   
-          <Field type="text" name="size" placeholder="Size" />
-          {touched.size && errors.size && <p className="error">{errors.size}</p>}
-          <Field component="select" className="food-select" name="diet">
-            <option>Please Choose an Option</option>
-            <option value="herbivore">Herbivore</option>
-            <option value="carnivore">Carnivore</option>
-            <option value="omnivore">Omnivore</option>
+          <Field type="text" name="email" placeholder="Email" />
+          {touched.email && errors.email && <p className="error">{errors.email}</p>}
+
+          <Field type="password" name="password" placeholder="Password" />
+          {touched.password && errors.password && <p className="error">{errors.password}</p>}
+
+
+          <Field component="select" className="food-select" name="role">
+            <option>Please Choose a Role</option>
+            <option value="user">User</option>
+            <option value="professional">Professional</option>
+            <option value="other">Other</option>
           </Field>
           <label>
-            vaccinations
+            Terms of Service
             <Field
               type="checkbox"
-              name="vaccinations"
-              checked={values.vaccinations}
+              name="tos"
+              checked={values.tos}
             />
-            <Field
-              component="textarea"
-              type="text"
-              name="notes"
-              placeholder="Notes"
-            />
+
           </label>
           <button>Submit!</button>
         </Form>
         {info.map( information => (
           <ul key={information.id}>
-            <li>Species:{information.species}</li>
-            <li>Size: {information.size}</li>
-            <li>Diet: {information.diet}</li>
+            <li>Name:{information.name}</li>
+            <li>Email: {information.email}</li>
+            <li>Password: {information.password}</li>
+            <li>Role: {information.role}</li>
           </ul>
         ))}
       </div>
