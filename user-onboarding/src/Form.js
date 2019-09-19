@@ -57,18 +57,19 @@ const UserForm = ({ values, errors, touched, status }) => {
     );
   };
   const FormikUserForm= withFormik({
-    mapPropsToValues({ species, size, diet, vaccinations, notes }) {
+    mapPropsToValues({ name, email, password, role, tos }) {
       return {
-        species: species || "",
-        size: size || "",
-        diet: diet || "",
-        vaccinations: vaccinations || false,
-        notes: notes || ""
+        name: name || "",
+        email: email || "",
+        password: password || "",
+        role: role || "",
+        tos: tos || false,
+ 
       };
     },
     validationSchema: Yup.object().shape({
-      species: Yup.string().required("You must put a species"),
-      size: Yup.string().required()
+      email: Yup.string().email("You must enter a valid email address"),
+      password: Yup.string().min(7, 'Password is too short - should be 7 chars minimum.')
     }),
     //You can use this to see the values
     handleSubmit(values, { setStatus }) {
